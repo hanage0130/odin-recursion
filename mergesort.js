@@ -1,43 +1,34 @@
 const mergeSort = (arr) => {
-    const sort = (arr) => {
-        if (arr.length === 1) {
-            return arr.slice();
-        }
-        const mid = Math.floor(arr.length / 2);
-        l = sort(arr.slice(0, mid));
-        r = sort(arr.slice(mid, arr.length));
-        console.log(mid, arr.length - mid);
-        console.log(arr.slice(0, mid), arr.slice(mid, arr.length));
-        console.log(l, r);
-        let i = 0, j = 0;
-        while (i < l.length || j < r.length) {
-            if (i === l.length) {
-                arr[i + j] = r[j];
-                j++;
-            } else if (j === r.length) {
-                arr[i + j] = l[i];
-                i++;
-            } else {
-                if (l[i] < r[j]) {
-                    arr[i + j] = l[i];
-                    i++;
-                } else {
-                    arr[i + j] = r[j];
-                    j++;
-                }
-            }
-        }
+    if (arr.length <= 1) {
         return arr;
     }
-    return sort(arr);
+    const mid = Math.floor(arr.length / 2);
+    const l = mergeSort(arr.slice(0, mid));
+    const r = mergeSort(arr.slice(mid, arr.length));
+    const res = [];
+    let i = 0, j = 0;
+    while (i < l.length || j < r.length) {
+        if (i === l.length) {
+            res.push(r[j]);
+            j++;
+        } else if (j === r.length) {
+            res.push(l[i]);
+            i++;
+        } else {
+            if (l[i] <= r[j]) {
+                res.push(l[i]);
+                i++;
+            } else {
+                res.push(r[j]);
+                j++;
+            }
+        }
+    }
+    return res;
 }
 
-
-
-// console.log(mergeSort([1]));
-// console.log(mergeSort([1, 2]));
-// console.log(mergeSort([1, 2, 3]));
-// console.log(mergeSort([1, 2, 3, 4]));
+// console.log(mergeSort([]));
+// console.log(mergeSort([73]));
 // console.log(mergeSort([1, 2, 3, 4, 5]));
-// console.log(mergeSort([1, 2, 3, 4, 5, 6]));
-console.log(mergeSort([1, 2, 3, 4, 5, 6, 7]));
+// console.log(mergeSort([3, 2, 1, 13, 8, 5, 0, 1]));
+// console.log(mergeSort([105, 79, 100, 110]));

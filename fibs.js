@@ -26,18 +26,16 @@ function fibsRec(n) {
     return fib;
 }
 
-const isEqual = (arr1, arr2) => {
-    return arr1.every((element, index) => element === arr2[index]);
-}
+// const isEqual = (arr1, arr2) => {
+//     return arr1.every((element, index) => element === arr2[index]);
+// }
 
-
-
-for (let i = 1; i <= 10; i++) {
-    const a = fibs(i);
-    const b = fibsRec(i);
-    console.log(a);
-    if (!isEqual(a, b)) {
-        console.log(i);
-        break;
-    } 
-}
+// for (let i = 1; i <= 10; i++) {
+//     const a = fibs(i);
+//     const b = fibsRec(i);
+//     console.log(a);
+//     if (!isEqual(a, b)) {
+//         console.log(i);
+//         break;
+//     } 
+// }
